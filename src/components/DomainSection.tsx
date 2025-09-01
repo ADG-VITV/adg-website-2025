@@ -44,17 +44,16 @@ const DomainsSection: React.FC = () => {
           {domains.map((domain) => (
             <div
               key={domain.name}
-              className="group aspect-square p-4 sm:p-6 bg-white/10 rounded-3xl border border-white/20 backdrop-blur-lg shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-white/20 hover:scale-105 hover:shadow-2xl"
+              className="group aspect-square p-0 sm:p-2 md:p-3 lg:p-3 bg-white/10 rounded-3xl border border-white/20 backdrop-blur-lg shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-white/20 hover:scale-105 hover:shadow-2xl"
             >
               <Image
                 src={domain.icon}
                 alt={`${domain.name} icon`}
-                className="w-5/6 h-5/6 object-contain drop-shadow-xl transition-transform duration-300 group-hover:scale-110"
+                className="w-2/3 h-2/3 sm:w-3/4 sm:h-3/4 md:w-7/8 md:h-7/8 lg:w-9/10 lg:h-9/10 object-contain drop-shadow-xl transition-transform duration-300 group-hover:scale-110"
               />
             </div>
           ))}
         </div>
-        
       </div>
     </section>
   );
