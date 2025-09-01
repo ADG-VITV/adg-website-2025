@@ -1,11 +1,17 @@
 import DynamicIslandNavbar from "./components/navbar";
 import TechClubBanner from "./components/home";
+import DomainSection from "@/components/DomainSection";
+import ContactUs from "@/components/ContactUs";
+import Dock from "@/components/OurTeam";
 
 export default function Home() {
   return (
-    <div>
+    <>
       <DynamicIslandNavbar />
       <TechClubBanner />
-    </div>
+      <DomainSection />
+      <Dock />
+      <ContactUs />
+    </>
   );
 }
