@@ -55,7 +55,7 @@ const DynamicIslandNavbar: React.FC = () => {
 
   return (
     <nav
-      className="fixed top-6 left-1/2 -translate-x-1/2 z-50"
+      className="fixed top-6 left-1/2 -translate-x-1/2 z-60"
       aria-label="Main navigation"
     >
       <div className="absolute inset-0 w-full h-full rounded-full shadow-[0_0_20px_5px_rgba(168,85,247,0.8)]"></div>
