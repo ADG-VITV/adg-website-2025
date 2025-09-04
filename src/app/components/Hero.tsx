@@ -4,8 +4,15 @@ import Image from "next/image";
 
 const TechClubBanner: React.FC = () => {
   return (
-    <div className="w-full min-h-screen relative bg-blue-950 overflow-hidden">
-      <div className="absolute inset-0 bg-[url('/bg.png')] opacity-40 z-10" />
+    <div>
+        <Image
+          src="/bg.png"
+          alt="Background Image"
+          fill
+          className="object-cover opacity-40"
+          priority
+        />
+
       <div className="flex flex-col md:flex-row justify-between -mt-5">
         <div className="absolute z-10">
           <Image
@@ -64,7 +71,7 @@ const TechClubBanner: React.FC = () => {
             VELLORE, TN
           </div>
         </div>
-        <div className="flex flex-col mt-40 mr-10 z-10">
+        <div className="flex flex-col mt-34 mr-10 z-10">
           <div className="flex justify-between gap-5 items-start">
             {[
               { src: "/blank1.png", alt: "Club Image 1", height: 230, width: 250 },
