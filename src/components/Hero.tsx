@@ -4,17 +4,10 @@ import Image from "next/image";
 
 const TechClubBanner: React.FC = () => {
   return (
-    <div>
-        <Image
-          src="/bg.png"
-          alt="Background Image"
-          fill
-          className="object-cover opacity-40"
-          priority
-        />
+    <div id="tech-club-banner" className="relative">
 
       <div className="flex flex-col md:flex-row justify-between -mt-5">
-        <div className="absolute z-10">
+        <div className="absolute -z-10">
           <Image
             src="/bg-design-1.png"
             alt="Decorative Background Pattern"

@@ -8,7 +8,16 @@ import ContactUsHeading from '@/assets/heading2.svg';
 
 const ContactUs: React.FC = () => {
   return (
-    <footer className="pt-5 pb-8">
+    <footer id='contact-us' className="pt-5 pb-8">
+      <div className="absolute right-0 -mt-106 overflow-hidden -z-10 h-[1600px] w-[1400px] lg:h-[1385px] lg:w-[1200px]">
+              <Image
+                src="/bg-design-4.svg"
+                alt="Background Design"
+                fill
+                className="object-contain object-right"
+                priority
+              />
+            </div>
       <div className="container mx-auto px-6">
 
         <div className="flex justify-center">

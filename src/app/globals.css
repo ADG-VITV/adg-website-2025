@@ -25,3 +25,76 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* 
+   Background pattern classes - Commented out (keeping bg.png file)
+   Uncomment these if you want to use bg.png background again
+   
+.bg-pattern {
+  background-image: url('/bg.png');
+  background-size: initial;
+  background-position: 0 0;
+  background-repeat: repeat;
+  background-attachment: fixed;
+}
+
+.bg-pattern-original {
+  background-image: url('/bg.png');
+  background-size: initial;
+  background-position: 0 0;
+  background-repeat: repeat;
+  background-attachment: fixed;
+}
+
+.bg-pattern-tiny {
+  background-image: url('/bg.png');
+  background-size: 40px 40px;
+  background-position: 0 0;
+  background-repeat: repeat;
+  background-attachment: fixed;
+}
+
+.bg-pattern-small {
+  background-image: url('/bg.png');
+  background-size: 80px 80px;
+  background-position: 0 0;
+  background-repeat: repeat;
+  background-attachment: fixed;
+}
+
+.bg-pattern-large {
+  background-image: url('/bg.png');
+  background-size: 200px 200px;
+  background-position: 0 0;
+  background-repeat: repeat;
+  background-attachment: fixed;
+}
+
+.bg-pattern-parallax {
+  background-image: url('/bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat;
+  background-attachment: fixed;
+}
+
+.bg-pattern-overlay {
+  position: relative;
+}
+
+.bg-pattern-overlay::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/bg.png');
+  background-size: auto auto;
+  background-position: 0 0;
+  background-repeat: repeat;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: 1;
+}
+*/
