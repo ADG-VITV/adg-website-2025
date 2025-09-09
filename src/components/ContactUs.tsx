@@ -4,7 +4,6 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaFacebookF, FaLinkedinIn, FaInstagram, FaTwitter, FaGithub, FaMediumM } from 'react-icons/fa';
-import { SiVercel } from 'react-icons/si';
 import ContactUsHeading from '@/assets/heading2.svg';
 
 const ContactUs: React.FC = () => {
@@ -102,7 +101,7 @@ const ContactUs: React.FC = () => {
           </div>
         </div>
         <div className="border-t border-gray-800 mt-16 md:mt-20 pt-8 text-center">
-          <p className="text-gray-500">
+          <p className="text-gray-200">
             &copy; {new Date().getFullYear()} Made with ❤️ by ADG. All Rights Reserved.
           </p>
         </div>
