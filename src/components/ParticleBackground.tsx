@@ -11,7 +11,7 @@ interface Particle {
   opacity: number;
   color: string;
   pulsePhase: number;
-  baseSize: number; // ✅ fixed typo
+  baseSize: number;
 }
 
 const ParticleBackground: React.FC = () => {
@@ -84,7 +84,7 @@ const ParticleBackground: React.FC = () => {
         // Pulsing effect
         particle.pulsePhase += 0.02;
         particle.size = Math.max(
-          0.1, // ensure radius is always positive
+          0.1,
           particle.baseSize + Math.sin(particle.pulsePhase) * 0.3
         );
 

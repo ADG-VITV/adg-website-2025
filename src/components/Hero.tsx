@@ -1,5 +1,4 @@
 "use client";
-import { on } from "events";
 import Image from "next/image";
 
 const TechClubBanner: React.FC = () => {

@@ -16,16 +16,32 @@ interface EventProps {
 
 const EventFolder = ({ title, image, description, id, date, type }: EventProps) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [openLeft, setOpenLeft] = useState(false);
+  const ref = React.useRef<HTMLDivElement>(null);
+
   const router = useRouter();
 
   const handleClick = () => {
-    window.open(`/event/${id}`, "_blank", "noopener,noreferrer");
+    router.push(`/event/${id}`); // navigates in the same tab
+  };
+
+  const handleMouseEnter = () => {
+    if (ref.current) {
+      const rect = ref.current.getBoundingClientRect();
+      const viewportWidth = window.innerWidth;
+
+      const previewWidth = Math.min(340, viewportWidth * 0.9);
+
+      setOpenLeft(rect.right + previewWidth > viewportWidth);
+    }
+    setIsHovered(true);
   };
 
   return (
     <div
-      className={`relative flex flex-col items-center`}
-      onMouseEnter={() => setIsHovered(true)}
+      ref={ref}
+      className="relative flex flex-col items-center"
+      onMouseEnter={handleMouseEnter}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Folder Icon + Title */}
@@ -39,73 +55,64 @@ const EventFolder = ({ title, image, description, id, date, type }: EventProps) 
             alt={title}
             width={164}
             height={144}
-            className={`transition-transform duration-200 hover:scale-105`}
+            className="transition-transform duration-200 hover:scale-105"
           />
-          {/* Event type label overlay */}
-          <div className={`absolute top-2 right-2 text-white text-xs px-2 py-1 rounded-md ${
-            type === 'upcoming' ? 'bg-blue-500/90' : 'bg-gray-500/90'
-          }`}>
-            {type === 'upcoming' ? 'UPCOMING' : 'PAST'}
+          <div
+            className={`absolute top-2 right-2 text-white text-xs px-2 py-1 rounded-md ${
+              type === "upcoming" ? "bg-blue-500/90" : "bg-gray-500/90"
+            }`}
+          >
+            {type === "upcoming" ? "UPCOMING" : "PAST"}
           </div>
         </div>
-        <p className={`text-sm text-center font-semibold text-black`}>
-          {title}
-        </p>
+        <p className="text-sm text-center font-semibold text-black">{title}</p>
         {date && (
-          <p className={`text-sm font-semibold text-blue-600`}>{date}</p>
+          <p className="text-sm font-semibold text-blue-600">{date}</p>
         )}
       </div>
 
       {/* Hover Preview */}
       <AnimatePresence>
-    {isHovered && (
-      <motion.div
-        initial={{ opacity: 0, y: 10, scale: 0.95 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        exit={{ opacity: 0, y: 10, scale: 0.95 }}
-        transition={{ duration: 0.25, ease: "easeOut" }}
-        className={`absolute z-20 -top-10 left-35 w-80 rounded-2xl shadow-xl
-                  backdrop-blur-2xl border overflow-hidden pointer-events-none bg-zinc-800`}
-      >
-        {/* Header */}
-        <div
-          className={`p-3 border-b bg-zinc-800`}>
-          <h3
-            className={`text-lg font-semibold tracking-tight text-white flex justify-center`}>
-            {title}
-          </h3>
-        </div>
-
-        {/* Image */}
-        <div
-          className={`relative w-full h-40 bg-zinc-800 px-5`}
-        >
-          {image ? (
-            <Image
-              src={image}
-              alt={title}
-              fill
-              className={`object-cover rounded-none`}
-            />
-          ) : (
-            <div className="w-full h-full flex items-center justify-center text-neutral-500 text-sm">
-              No image available
-            </div>
-          )}
-        </div>
-
-        {/* Description */}
-        <div className="p-4">
-          <p
-            className={`text-sm leading-relaxed text-white`}
+        {isHovered && (
+          <motion.div
+            initial={{ opacity: 0, y: 10, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 10, scale: 0.95 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            className={`absolute z-20 w-[90vw] sm:w-72 md:w-80 rounded-2xl shadow-xl
+              backdrop-blur-2xl border overflow-hidden pointer-events-none bg-zinc-800 -top-10
+              ${openLeft ? "right-40" : "left-40"}`}
           >
-            {description}
-          </p>
-        </div>
-      </motion.div>
-    )}
-  </AnimatePresence>
+            {/* Header */}
+            <div className="p-3 border-b bg-zinc-800">
+              <h3 className="text-lg font-semibold tracking-tight text-white flex justify-center">
+                {title}
+              </h3>
+            </div>
 
+            {/* Image */}
+            <div className="relative w-full h-40 bg-zinc-800">
+              {image ? (
+                <Image
+                  src={image}
+                  alt={title}
+                  fill
+                  className="object-cover rounded-none"
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center text-neutral-500 text-sm">
+                  No image available
+                </div>
+              )}
+            </div>
+
+            {/* Description */}
+            <div className="p-4">
+              <p className="text-sm leading-relaxed text-white">{description}</p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
@@ -199,7 +206,7 @@ const Events = () => {
             className="w-full max-w-2xl h-auto" 
           />
         </div>
-      <section className="w-full min-h-screen flex justify-center items-center mt-5 z-10">
+      <section className="w-full min-h-screen flex justify-center items-center mt-5 px-5 z-10">
         <div
           className="max-w-[1323px] w-full rounded-2xl shadow-xl bg-neutral-300 border pb-12 mt-20 sm:mt-0"
         >

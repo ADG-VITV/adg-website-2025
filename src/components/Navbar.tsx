@@ -11,7 +11,7 @@ interface NavLink {
 }
 
 const navLinks: NavLink[] = [
-  { href: "#hero", label: "Home" },
+  { href: "#tech-club-banner", label: "Home" },
   { href: "#domains", label: "Domains" },
   { href: "#our-team", label: "Team" },
   { href: "#events", label: "Events" },
@@ -33,7 +33,7 @@ const DynamicIslandNavbar: React.FC = () => {
         element.scrollIntoView({ behavior: "smooth" })
       }
     } else {
-      router.push(href) // fallback for real routes
+      router.push(href)
     }
   }
 
@@ -130,7 +130,7 @@ const DynamicIslandNavbar: React.FC = () => {
                     key={link.href}
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
-                    className="hover:text-purple-300 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    className="hover:text-purple-300 text-sm md:text-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500"
                     aria-label={link.label}
                   >
                     {link.label}
@@ -145,7 +145,7 @@ const DynamicIslandNavbar: React.FC = () => {
           {expanded && (
             <motion.button
               onClick={() => setExpanded(false)}
-              className="ml-auto text-white text-xl hover:text-purple-300 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="ml-auto text-white text-md md:text-xl hover:text-purple-300 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 pr-4 md:pr-2"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
