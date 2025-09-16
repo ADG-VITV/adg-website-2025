@@ -6,10 +6,10 @@ const MicroParticles: React.FC = () => {
   // Generate micro particles - small and fast
   const microParticles = Array.from({ length: 100 }, (_, i) => ({
     id: i,
-    size: Math.random() * 1.5 + 0.3, // Very small: 0.3 to 1.8px
+    size: Math.random() * 1.5 + 0.3,
     left: Math.random() * 100,
     animationDelay: Math.random() * 15,
-    animationDuration: Math.random() * 8 + 5, // Faster: 5-13 seconds
+    animationDuration: Math.random() * 8 + 5,
   }));
 
   return (
