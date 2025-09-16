@@ -22,7 +22,7 @@ const MEMBERS: Member[] = [
   { id: "5", name: "CHINMAY SINHA", role: "Chairperson" },
   { id: "6", name: "MANAN AGARWAL", role: "Vice Chairperson" },
   { id: "7", name: "MANSI SAXENA", role: "Co Secretary" },
-  { id: "8", name: "Daksh Chaudhary", role: "Project Lead" },
+  { id: "8", name: "DAKSH CHAUDHARY", role: "Project Lead" },
   { id: "9", name: "PRABHAT PANDEY", role: "R&D Lead" },
   { id: "10", name: "OJAS NAHTA", role: "Android Lead" },
 ]
