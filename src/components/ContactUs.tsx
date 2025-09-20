@@ -8,7 +8,7 @@ import ContactUsHeading from '@/assets/heading2.svg';
 
 const ContactUs: React.FC = () => {
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
-    e.preventDefault(); // Prevent default Link behavior
+    e.preventDefault();
     const element = document.getElementById(targetId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });

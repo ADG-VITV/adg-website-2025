@@ -4,11 +4,17 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import DineImage from '@/assets/events/dine.png';
+import DeathImage from '@/assets/events/death.png';
+import FigmaImage from '@/assets/events/figma.png';
+import ParanormImage from '@/assets/events/paranorm.png';
+import SharkImage from '@/assets/events/shark.png';
+import iOSImage from '@/assets/events/ios.png';
 
 interface EventProps {
   id: string;
   title: string;
-  image: string;
+  image: string | any;
   description: string;
   date?: string;
   type: 'upcoming' | 'past';
@@ -22,7 +28,7 @@ const EventFolder = ({ title, image, description, id, date, type }: EventProps) 
   const router = useRouter();
 
   const handleClick = () => {
-    router.push(`/event/${id}`); // navigates in the same tab
+    router.push(`/event/${id}`);
   };
 
   const handleMouseEnter = () => {
@@ -131,7 +137,7 @@ const Events = () => {
     {
       id: "upcoming-2", 
       title: "Spring Hackathon",
-      image: "/bg.png",
+      image: '/bg.png',
       description: "Join our biggest hackathon of the year! 48 hours to build amazing projects and win exciting prizes.",
       date: "Apr 5-7, 2025",
       type: "upcoming"
@@ -139,7 +145,7 @@ const Events = () => {
     {
       id: "upcoming-3",
       title: "Cloud Computing Seminar",
-      image: "/bg.png", 
+      image: '/bg.png', 
       description: "Explore AWS, Azure, and Google Cloud platforms. Learn deployment strategies and best practices from industry experts.",
       date: "Apr 22, 2025",
       type: "upcoming"
@@ -147,48 +153,48 @@ const Events = () => {
     // Past Events
     {
       id: "past-1",
-      title: "Tech Talk 2024",
-      image: "/bg.png",
+      title: "Dinner To Die For",
+      image: DineImage,
       description: "An inspiring session on emerging technologies and their impact on society. Featured industry experts sharing insights on AI, blockchain, and the future of software development.",
-      date: "Jan 2024",
+      date: "Feb 20, 2025",
       type: "past"
     },
     {
       id: "past-2", 
-      title: "Hackathon Winter",
-      image: "/bg.png",
+      title: "Shark Tech",
+      image: SharkImage,
       description: "48-hour coding marathon where students built innovative solutions to real-world problems. Amazing projects were showcased including healthcare apps, sustainability tools, and educational platforms.",
-      date: "Dec 2023",
+      date: "Feb 5, 2025",
       type: "past"
     },
     {
       id: "past-3",
-      title: "AI Workshop Series",
-      image: "/bg.png", 
+      title: "Figma Enigma",
+      image: FigmaImage, 
       description: "Comprehensive workshop series covering machine learning fundamentals, neural networks, and practical AI applications. Students learned TensorFlow, PyTorch, and deployed their first ML models.",
-      date: "Nov 2023",
+      date: "Jan 21, 2025",
       type: "past"
     },
     {
       id: "past-4",
-      title: "Web Dev Bootcamp",
-      image: "/bg.png",
+      title: "iOS Fusion 7.0",
+      image: iOSImage,
       description: "Intensive bootcamp covering modern web development technologies including React, Next.js, and full-stack development. Participants built complete web applications from scratch.",
-      date: "Oct 2023",
+      date: "Sep 27, 2024",
       type: "past"
     },
     {
       id: "past-5",
-      title: "Cybersecurity Summit",
-      image: "/bg.png", 
+      title: "DeathCode",
+      image: DeathImage, 
       description: "Deep dive into cybersecurity practices, ethical hacking, and protecting digital assets in the modern world. Featured hands-on penetration testing workshops.",
-      date: "Sep 2023",
+      date: "Sep 19, 2024",
       type: "past"
     },
     {
       id: "past-6",
-      title: "Open Source Day",
-      image: "/bg.png",
+      title: "Paranorm",
+      image: ParanormImage,
       description: "Celebrating open source contributions and learning how to contribute to major open source projects effectively. Students made their first contributions to popular repositories.",
       date: "Aug 2023",
       type: "past"
