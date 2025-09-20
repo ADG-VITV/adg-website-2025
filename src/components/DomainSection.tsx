@@ -1,6 +1,5 @@
 import React from 'react';
 import Image from 'next/image';
-
 import DomainsHeading from '@/assets/heading.svg';
 import UiUxIcon from '@/assets/d1.svg';
 import IosIcon from '@/assets/d2.svg';
@@ -29,8 +28,18 @@ const domains: Domain[] = [
 
 const DomainsSection: React.FC = () => {
   return (
-    <section className="py-20 sm:py-28">
-      <div className="container mx-auto px-6">
+    <section id='domains' className="py-20 sm:py-28">
+      <div className="absolute right-0 overflow-hidden -z-10 h-[1350px] w-[1400px] lg:h-[1710px] lg:w-[1760px]">
+        <Image
+          src="/bg-design-2.svg"
+          alt="Background Design"
+          fill
+          className="object-contain object-right"
+          priority
+        />
+      </div>
+
+      <div className="container mx-auto px-6 z-10">
         
         <div className="flex justify-center mb-12 md:mb-16">
           <Image 

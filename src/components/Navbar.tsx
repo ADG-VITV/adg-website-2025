@@ -3,6 +3,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation"
 
 interface NavLink {
   href: string;
@@ -10,17 +11,31 @@ interface NavLink {
 }
 
 const navLinks: NavLink[] = [
-  { href: "/", label: "Home" },
-  { href: "/domains", label: "Domains" },
-  { href: "/team", label: "Team" },
-  { href: "/events", label: "Events" },
-  { href: "/contact", label: "Contact Us" },
+  { href: "#tech-club-banner", label: "Home" },
+  { href: "#domains", label: "Domains" },
+  { href: "#our-team", label: "Team" },
+  { href: "#events", label: "Events" },
+  { href: "#contact-us", label: "Contact Us" },
 ];
 
 const DynamicIslandNavbar: React.FC = () => {
   const [expanded, setExpanded] = useState<boolean>(false);
   const [scrolled, setScrolled] = useState<boolean>(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const router = useRouter()
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith("#")) {
+      e.preventDefault()
+      const targetId = href.replace("#", "")
+      const element = document.getElementById(targetId)
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" })
+      }
+    } else {
+      router.push(href)
+    }
+  }
 
   const handleScroll = useCallback(() => {
     const scrollThreshold = 50;
@@ -49,7 +64,18 @@ const DynamicIslandNavbar: React.FC = () => {
 
   const getNavbarWidth = () => {
     if (typeof window === "undefined") return 130;
-    return window.innerWidth < 768 ? window.innerWidth - 32 : 1269;
+
+    const width = window.innerWidth;
+
+    if (width < 770) {
+      return width - 32; 
+    } else if (width <= 900) {
+      return 770;
+    } else if (width <= 1269) {
+      return 900;
+    } else {
+      return 1269;
+    }
   };
 
   return (
@@ -86,7 +112,7 @@ const DynamicIslandNavbar: React.FC = () => {
         <AnimatePresence>
           {expanded && (
             <motion.ul
-              className="flex flex-row md:gap-30 gap-6 px-6 text-white text-base md:text-lg font-semibold items-center"
+              className="flex flex-row lg:gap-30 md:gap-15 gap-6 px-6 text-white text-base md:text-lg font-semibold items-center"
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 20 }}
@@ -101,8 +127,10 @@ const DynamicIslandNavbar: React.FC = () => {
                   transition={{ duration: 0.2 }}
                 >
                   <Link
+                    key={link.href}
                     href={link.href}
-                    className="hover:text-purple-300 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    onClick={(e) => handleNavClick(e, link.href)}
+                    className="hover:text-purple-300 text-sm md:text-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500"
                     aria-label={link.label}
                   >
                     {link.label}
@@ -117,7 +145,7 @@ const DynamicIslandNavbar: React.FC = () => {
           {expanded && (
             <motion.button
               onClick={() => setExpanded(false)}
-              className="ml-auto text-white text-xl hover:text-purple-300 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="ml-auto text-white text-md md:text-xl hover:text-purple-300 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 pr-4 md:pr-2"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
