@@ -18,7 +18,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Main content container */}
-      <div className="relative z-20 flex w-full max-w-screen-2xl mx-auto px-4 md:px-8 flex-col lg:flex-row items-center justify-between gap-10">
+      <div className="relative z-20 flex w-full max-w-screen-2xl mx-auto px-4 md:px-8 sm:-mt-20 flex-col lg:flex-row items-center justify-between gap-10">
         
         {/* Left SVG container: Takes full width on mobile, half on large screens */}
         <div className="w-full lg:w-1/2 flex justify-center">

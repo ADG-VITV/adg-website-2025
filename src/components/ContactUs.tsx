@@ -17,7 +17,7 @@ const ContactUs: React.FC = () => {
 
   return (
     <footer id='contact-us' className="pt-5 pb-8">
-      <div className="absolute right-0 -mt-106 overflow-hidden -z-10 h-[1600px] w-[1400px] lg:h-[1385px] lg:w-[1200px]">
+      <div className="absolute right-0 -mt-85 overflow-hidden -z-10 h-[1600px] w-[1400px] lg:h-[1385px] lg:w-[1200px]">
         <Image
           src="/bg-design-4.svg"
           alt="Background Design"
