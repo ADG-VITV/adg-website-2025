@@ -1,14 +1,14 @@
 import React from 'react';
 import Image from 'next/image';
 import DomainsHeading from '@/assets/heading.svg';
-import UiUxIcon from '@/assets/d1.svg';
-import IosIcon from '@/assets/d2.svg';
-import WebDevIcon from '@/assets/d3.svg';
-import SecurityIcon from '@/assets/d4.svg';
-import AndroidIcon from '@/assets/d5.svg';
-import AiIcon from '@/assets/d6.svg';
-import BusinessIcon from '@/assets/d7.svg';
-import EventsIcon from '@/assets/d8.svg';
+import UiUxIcon from '@/assets/domains/d1.png';
+import IosIcon from '@/assets/domains/d2.png';
+import WebDevIcon from '@/assets/domains/d3.png';
+import SecurityIcon from '@/assets/domains/d4.png';
+import AndroidIcon from '@/assets/domains/d5.png';
+import AiIcon from '@/assets/domains/d6.png';
+import BusinessIcon from '@/assets/domains/d7.png';
+import EventsIcon from '@/assets/domains/d8.png';
 
 interface Domain {
   name: string;
@@ -40,12 +40,12 @@ const DomainsSection: React.FC = () => {
       </div>
 
       <div className="container mx-auto px-6 z-10">
-        
+
         <div className="flex justify-center mb-12 md:mb-16">
-          <Image 
-            src={DomainsHeading} 
-            alt="Domains Heading" 
-            className="w-full max-w-2xl h-auto" 
+          <Image
+            src={DomainsHeading}
+            alt="Domains Heading"
+            className="w-full max-w-2xl h-auto"
           />
         </div>
 
@@ -53,12 +53,15 @@ const DomainsSection: React.FC = () => {
           {domains.map((domain) => (
             <div
               key={domain.name}
-              className="group aspect-square p-0 sm:p-2 md:p-3 lg:p-3 bg-white/10 rounded-3xl border border-white/20 backdrop-blur-lg shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-white/20 hover:scale-105 hover:shadow-2xl"
+              className="group aspect-square flex items-center justify-center p-4 bg-white/10 rounded-3xl border border-white/20 backdrop-blur-lg shadow-lg transition-all duration-300 hover:bg-white/20 hover:scale-105 hover:shadow-2xl"
             >
               <Image
                 src={domain.icon}
                 alt={`${domain.name} icon`}
-                className="w-2/3 h-2/3 sm:w-3/4 sm:h-3/4 md:w-7/8 md:h-7/8 lg:w-9/10 lg:h-9/10 object-contain drop-shadow-xl transition-transform duration-300 group-hover:scale-110"
+                width={140}
+                height={140}
+                className="object-contain mx-auto"
+                priority
               />
             </div>
           ))}

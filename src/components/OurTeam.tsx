@@ -15,16 +15,16 @@ type Member = {
 }
 
 const MEMBERS: Member[] = [
-  { id: "1", name: "AMAN DEOL", role: "Technical Head" },
-  { id: "2", name: "RIYA KORADWAR", role: "Manager Lead" },
-  { id: "3", name: "ARCHIE JAIN", role: "Publicity Lead" },
-  { id: "4", name: "RAGHAV MIGLANI", role: "GeneralSecretary" },
-  { id: "5", name: "CHINMAY SINHA", role: "Chairperson" },
-  { id: "6", name: "MANAN AGARWAL", role: "Vice Chairperson" },
-  { id: "7", name: "MANSI SAXENA", role: "Co Secretary" },
-  { id: "8", name: "DAKSH CHAUDHARY", role: "Project Lead" },
-  { id: "9", name: "PRABHAT PANDEY", role: "R&D Lead" },
-  { id: "10", name: "OJAS NAHTA", role: "Android Lead" },
+  { id: "1", name: "AMAN DEOL", role: "Technical Head", src: "/team/aman.png" },
+  { id: "2", name: "RIYA KORADWAR", role: "Manager Lead", src: "/team/riya.png" },
+  { id: "3", name: "ARCHIE JAIN", role: "Publicity Lead", src: "/team/archie.png" },
+  { id: "4", name: "RAGHAV MIGLANI", role: "General Secretary", src: "/team/raghav.png" },
+  { id: "5", name: "CHINMAY SINHA", role: "Chairperson", src: "/team/chinmay.png" },
+  { id: "6", name: "MANAN AGARWAL", role: "Vice Chairperson", src: "/team/manan.png" },
+  { id: "7", name: "MANSI SAXENA", role: "Co Secretary", src: "/team/mansi.png" },
+  { id: "8", name: "DAKSH CHAUDHARY", role: "Project Lead", src: "/team/daksh.png" },
+  { id: "9", name: "PRABHAT PANDEY", role: "R&D Lead", src: "/team/prabhat.png" },
+  { id: "10", name: "OJAS NAHTA", role: "Android Lead", src: "/team/ojas.png" },
 ]
 
 export default function TeamDock() {
@@ -192,7 +192,7 @@ function DockItem({
     >
       <Image
         src={member.src || "./profile.svg"}
-        alt=""
+        alt={member.name}
         width={100}
         height={100}
         className="pointer-events-none size-20 select-none rounded-md object-cover"
