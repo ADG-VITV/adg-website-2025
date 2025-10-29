@@ -11,7 +11,6 @@ interface NavLink {
 }
 
 const navLinks: NavLink[] = [
-  { href: "#tech-club-banner", label: "Home" },
   { href: "#domains", label: "Domains" },
   { href: "#our-team", label: "Team" },
   { href: "#events", label: "Events" },

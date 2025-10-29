@@ -1,50 +1,74 @@
 "use client";
 import Image from "next/image";
+import React, { useState, useEffect } from "react";
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  onHeroLoaded?: () => void;
+}
+
+const Hero: React.FC<HeroProps> = ({ onHeroLoaded }) => {
+  const [imagesLoaded, setImagesLoaded] = useState(0);
+
+  useEffect(() => {
+    const fallback = setTimeout(() => {
+      if (onHeroLoaded) onHeroLoaded();
+    }, 3000);
+
+    if (imagesLoaded >= 2 && onHeroLoaded) {
+      onHeroLoaded();
+    }
+
+    return () => clearTimeout(fallback);
+  }, [imagesLoaded, onHeroLoaded]);
+
   return (
-    <section id="tech-club-banner" className="relative flex items-center justify-center min-h-screen w-full overflow-hidden">
-      
-      {/* Decorative Wave Layer (No changes here) */}
-      <div className="hidden md:block absolute top-0 left-0 h-full w-auto max-w-[45%] z-10">
+    <section
+      id="tech-club-banner"
+      className="relative flex flex-col lg:flex-row items-center justify-center min-h-[calc(100vh-90px)] w-full overflow-hidden pt-24 lg:pt-0"
+    >
+      {/* Background */}
+      <div className="hidden md:block absolute top-0 left-0 h-full w-auto max-w-[45%] z-0">
         <Image
           src="/bg-design-1.png"
           alt="Decorative Background Pattern"
-          layout="fill"
-          objectFit="contain"
-          objectPosition="left"
+          fill
+          className="object-contain object-left opacity-90"
           priority
         />
       </div>
 
-      {/* Main content container */}
-      <div className="relative z-20 flex w-full max-w-screen-2xl mx-auto px-4 md:px-8 flex-col lg:flex-row items-center justify-between gap-10">
-        
-        {/* Left SVG container: Takes full width on mobile, half on large screens */}
-        <div className="w-full lg:w-1/2 flex justify-center">
-          <Image
-            src="/left_hero.svg"
-            alt="ADG VIT Hero Graphic"
-            width={612}
-            height={1009}
-            // Removed max-w-xl to allow the image to grow larger
-            className="w-full h-auto"
-            priority 
-          />
+      {/* Hero layout */}
+      <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between w-full max-w-[1350px] mx-auto px-6 md:px-10 gap-10">
+        {/* Left Hero Image */}
+        <div className="flex justify-center items-center w-full lg:w-1/2">
+          <div className="relative w-[85%] sm:w-[75%] md:w-[70%] lg:w-[80%] max-w-[560px] aspect-[4/5]">
+            <Image
+              src="/adgvit.png"
+              alt="ADG VIT Hero Graphic"
+              fill
+              className="object-contain scale-[1.1] md:scale-[1.15] lg:scale-[1.2]"
+              priority
+              onLoadingComplete={() => setImagesLoaded((prev) => prev + 1)}
+              onError={() => setImagesLoaded((prev) => prev + 1)}
+            />
+
+          </div>
         </div>
 
-        {/* Right SVG container: Takes full width on mobile, half on large screens */}
-        <div className="w-full lg:w-1/2 flex justify-center">
-          <Image
-            src="/right_hero.svg"
-            alt="Hero Graphic Grid"
-            width={708}
-            height={776}
-            // Applied h-auto for consistent, proportional scaling
-            className="w-full h-auto"
-          />
+        {/* Right Hero Image */}
+        <div className="flex justify-center items-center w-full lg:w-1/2 lg:p-16">
+          <div className="relative w-[85%] sm:w-[75%] md:w-[70%] lg:w-[80%] max-w-[520px] aspect-[4/4.7]">
+            <Image
+              src="/adg/widgets.png"
+              alt="ADG Gallery Grid"
+              fill
+              className="object-contain scale-[1.05] md:scale-[1.1] lg:scale-[1.15]"
+              priority
+              onLoadingComplete={() => setImagesLoaded((prev) => prev + 1)}
+              onError={() => setImagesLoaded((prev) => prev + 1)}
+            />
+          </div>
         </div>
-
       </div>
     </section>
   );

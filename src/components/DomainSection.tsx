@@ -16,19 +16,20 @@ interface Domain {
 }
 
 const domains: Domain[] = [
-  { name: 'UI/UX Design', icon: UiUxIcon },
+  { name: 'Design', icon: UiUxIcon },
   { name: 'iOS Development', icon: IosIcon },
   { name: 'Web Development', icon: WebDevIcon },
-  { name: 'Cyber Security', icon: SecurityIcon },
+  { name: 'Blockchain', icon: SecurityIcon },
   { name: 'Android Development', icon: AndroidIcon },
-  { name: 'AI & Machine Learning', icon: AiIcon },
-  { name: 'Business Development', icon: BusinessIcon },
+  { name: 'Machine Learning', icon: AiIcon },
+  { name: 'Finance', icon: BusinessIcon },
   { name: 'Event Management', icon: EventsIcon },
 ];
 
 const DomainsSection: React.FC = () => {
   return (
-    <section id='domains' className="py-20 sm:py-28">
+    <section id='domains' className="py-20 sm:py-28 relative">
+      {/* Background design */}
       <div className="absolute right-0 overflow-hidden -z-10 h-[1350px] w-[1400px] lg:h-[1710px] lg:w-[1760px]">
         <Image
           src="/bg-design-2.svg"
@@ -40,7 +41,7 @@ const DomainsSection: React.FC = () => {
       </div>
 
       <div className="container mx-auto px-6 z-10">
-
+        {/* Section Heading */}
         <div className="flex justify-center mb-12 md:mb-16">
           <Image
             src={DomainsHeading}
@@ -49,20 +50,27 @@ const DomainsSection: React.FC = () => {
           />
         </div>
 
+        {/* Domains Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-16 max-w-5xl mx-auto">
           {domains.map((domain) => (
             <div
               key={domain.name}
-              className="group aspect-square flex items-center justify-center p-4 bg-white/10 rounded-3xl border border-white/20 backdrop-blur-lg shadow-lg transition-all duration-300 hover:bg-white/20 hover:scale-105 hover:shadow-2xl"
+              className="group flex flex-col items-center justify-center p-6 bg-white/10 rounded-3xl border border-white/20 backdrop-blur-lg shadow-lg transition-all duration-300 hover:bg-white/20 hover:scale-105 hover:shadow-2xl"
             >
+              {/* Icon */}
               <Image
                 src={domain.icon}
                 alt={`${domain.name} icon`}
-                width={140}
-                height={140}
-                className="object-contain mx-auto"
+                width={120}
+                height={120}
+                className="object-contain mb-4 transition-transform duration-300 group-hover:scale-110"
                 priority
               />
+
+              {/* Domain Name */}
+              <p className="text-center text-white text-lg font-semibold tracking-wide group-hover:text-neutral-200 transition-colors">
+                {domain.name}
+              </p>
             </div>
           ))}
         </div>
