@@ -102,6 +102,7 @@ export default function TeamDock() {
         <FaChevronRight size={22} />
       </button>
 
+      {/* Scroll Section */}
       <div
         ref={scrollRef}
         className="relative flex overflow-x-auto space-x-8 px-6 scrollbar-hide snap-x snap-mandatory scroll-smooth"
@@ -112,7 +113,7 @@ export default function TeamDock() {
             href={m.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex flex-col items-center bg-neutral-800 hover:bg-neutral-700 text-white rounded-2xl w-[16rem] shrink-0 snap-start"
+            className="group flex flex-col items-center text-center bg-neutral-800 hover:bg-neutral-700 text-white rounded-2xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl transition-transform duration-300 ease-out hover:scale-[1.05] w-[16rem] shrink-0 snap-start"
           >
             <div className="relative w-full h-[18rem]">
               <Image
@@ -122,7 +123,7 @@ export default function TeamDock() {
                 className="object-contain bg-black"
               />
             </div>
-            <div className="p-4 text-center">
+            <div className="p-4 flex flex-col items-center">
               <p className="font-semibold text-lg">{m.name}</p>
               <p className="text-gray-400 text-sm">{m.role}</p>
               <p className="text-white text-xs mt-2 opacity-80">
