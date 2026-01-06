@@ -17,7 +17,8 @@ const MEMBERS = [
 ];
 
 export default function TeamDock() {
-  const scrollRef = useRef(null);
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+  const resumeTimeoutRef = useRef<number | null>(null);
   const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
@@ -25,7 +26,7 @@ export default function TeamDock() {
     if (!scrollContainer) return;
 
     let scrollSpeed = 0.8;
-    let rafId;
+    let rafId: number;
 
     const animate = () => {
       if (!isPaused) {
@@ -41,8 +42,14 @@ export default function TeamDock() {
 
     const handleUserScroll = () => {
       setIsPaused(true);
-      clearTimeout(window.resumeTimeout);
-      window.resumeTimeout = setTimeout(() => setIsPaused(false), 2500);
+
+      if (resumeTimeoutRef.current) {
+        clearTimeout(resumeTimeoutRef.current);
+      }
+
+      resumeTimeoutRef.current = window.setTimeout(() => {
+        setIsPaused(false);
+      }, 2500);
     };
 
     scrollContainer.addEventListener("scroll", handleUserScroll, { passive: true });
@@ -50,11 +57,15 @@ export default function TeamDock() {
     return () => {
       cancelAnimationFrame(rafId);
       scrollContainer.removeEventListener("scroll", handleUserScroll);
-      clearTimeout(window.resumeTimeout);
+
+      if (resumeTimeoutRef.current) {
+        clearTimeout(resumeTimeoutRef.current);
+      }
     };
   }, [isPaused]);
 
-  const scrollByAmount = (amount) => {
+  const scrollByAmount = (amount: number) => {
+    if (!scrollRef.current) return;
     scrollRef.current.scrollBy({ left: amount, behavior: "smooth" });
   };
 
