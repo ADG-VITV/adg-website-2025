@@ -24,6 +24,9 @@ const monaSans = localFont({
 
 export const metadata: Metadata = {
   title: "ADG | VIT",
+  icons: {
+    icon: "/logo.svg",
+  },
   description: "Advance Developers' Group's official website'",
 };
 
