@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import type { StaticImageData } from 'next/image';
 import DomainsHeading from '@/assets/heading.svg';
 import UiUxIcon from '@/assets/domains/d1.png';
 import IosIcon from '@/assets/domains/d2.png';
@@ -12,7 +13,7 @@ import EventsIcon from '@/assets/domains/d8.png';
 
 interface Domain {
   name: string;
-  icon: any;
+  icon: StaticImageData;
 }
 
 const domains: Domain[] = [
@@ -20,7 +21,7 @@ const domains: Domain[] = [
   { name: 'iOS Development', icon: IosIcon },
   { name: 'Web Development', icon: WebDevIcon },
   { name: 'Blockchain', icon: SecurityIcon },
-  { name: 'Android Development', icon: AndroidIcon },
+  { name: 'Android Development', icon: AndroidIcon }, 
   { name: 'Machine Learning', icon: AiIcon },
   { name: 'Finance', icon: BusinessIcon },
   { name: 'Event Management', icon: EventsIcon },
